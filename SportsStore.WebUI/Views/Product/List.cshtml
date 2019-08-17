@@ -1,8 +1,17 @@
-﻿@model Domain.Entities.Product
+﻿@using Domain.Entities
+
+@using Domain.Entities
+
+@model SportsStore.WebUI.Models.ProductListViewModel
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Product";
 }
 
-<h2>List</h2>
-
+@foreach (var item in Model.Products)
+{
+    @Html.Partial("ProductSummary", item)
+}
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
