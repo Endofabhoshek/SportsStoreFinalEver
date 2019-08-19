@@ -23,7 +23,7 @@ namespace SportsStore.WebUI.Infrastructure
             //Add Bindings
             container.Register<IProductRepository, EFProductRepository>();
             //container.Register<IOrderProcessor, EmailOrderProcessor>();
-
+            container.Register<IAuthProvider, FormsAuthenticateProvider>();
             container.Register<IOrderProcessor>(() => new EmailOrderProcessor(emailSettings));
 
             return container;
